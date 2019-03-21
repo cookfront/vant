@@ -9,6 +9,12 @@ export default sfc({
     disabled: Boolean
   },
 
+  provide() {
+    return {
+      vanCheckboxGroup: this
+    };
+  },
+
   watch: {
     value(val) {
       this.$emit('change', val);

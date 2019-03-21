@@ -1,24 +1,21 @@
 /**
  * find parent component by name
  */
+import { camelize } from '../utils';
 
-export const FindParentMixin = {
-  data() {
-    return {
-      parent: null
-    };
-  },
+export const FindParentMixin = (parent, child) => {
+  const provideName = camelize(`van-${parent}`);
 
-  methods: {
-    findParent(name) {
-      let parent = this.$parent;
-      while (parent) {
-        if (parent.$options.name === name) {
-          this.parent = parent;
-          break;
+  return {
+    inject: [provideName],
+
+    computed: {
+      parent() {
+        if (process.env.NODE_ENV !== 'production' && !this[provideName]) {
+          console.error(`[Vant] ${child} needs to be child of ${parent}`);
         }
-        parent = parent.$parent;
+        return this[provideName];
       }
     }
-  }
+  };
 };

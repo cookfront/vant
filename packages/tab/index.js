@@ -5,7 +5,7 @@ import { FindParentMixin } from '../mixins/find-parent';
 const [sfc, bem] = use('tab');
 
 export default sfc({
-  mixins: [FindParentMixin],
+  mixins: [FindParentMixin('tabs', 'tab')],
 
   props: {
     title: String,
@@ -36,10 +36,6 @@ export default sfc({
     title() {
       this.parent.setLine();
     }
-  },
-
-  created() {
-    this.findParent('van-tabs');
   },
 
   mounted() {

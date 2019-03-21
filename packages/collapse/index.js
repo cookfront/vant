@@ -12,6 +12,12 @@ export default sfc({
     }
   },
 
+  provide() {
+    return {
+      vanCollapse: this
+    };
+  },
+
   data() {
     return {
       items: []

@@ -8,7 +8,7 @@ const [sfc, bem] = use('collapse-item');
 const CELL_SLOTS = ['title', 'icon', 'right-icon'];
 
 export default sfc({
-  mixins: [FindParentMixin],
+  mixins: [FindParentMixin('collapse', 'collapse-item')],
 
   props: {
     ...cellProps,
@@ -53,7 +53,6 @@ export default sfc({
   },
 
   created() {
-    this.findParent('van-collapse');
     this.items.push(this);
     this.show = this.expanded;
     this.inited = this.expanded;

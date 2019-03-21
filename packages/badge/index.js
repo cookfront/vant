@@ -1,16 +1,17 @@
 import { use } from '../utils';
 import Info from '../info';
+import { FindParentMixin } from '../mixins/find-parent';
 
 const [sfc, bem] = use('badge');
 
 export default sfc({
+  mixins: [FindParentMixin('badge-group', 'badge')],
+
   props: {
     url: String,
     info: [String, Number],
     title: String
   },
-
-  inject: ['vanBadgeGroup'],
 
   created() {
     this.parent.badges.push(this);

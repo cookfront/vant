@@ -57,6 +57,12 @@ export default sfc({
     }
   },
 
+  provide() {
+    return {
+      vanTabs: this
+    };
+  },
+
   data() {
     return {
       tabs: [],

@@ -4,8 +4,8 @@
 import Icon from '../icon';
 import { FindParentMixin } from './find-parent';
 
-export const CheckboxMixin = (parent, bem) => ({
-  mixins: [FindParentMixin],
+export const CheckboxMixin = (parent, child, bem) => ({
+  mixins: [FindParentMixin(parent, child)],
 
   props: {
     name: null,
@@ -18,10 +18,6 @@ export const CheckboxMixin = (parent, bem) => ({
       type: String,
       default: 'round'
     }
-  },
-
-  created() {
-    this.findParent(parent);
   },
 
   computed: {

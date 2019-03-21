@@ -8,6 +8,12 @@ export default sfc({
     disabled: Boolean
   },
 
+  provide() {
+    return {
+      vanRadioGroup: this
+    };
+  },
+
   watch: {
     value(value) {
       this.$emit('change', value);
